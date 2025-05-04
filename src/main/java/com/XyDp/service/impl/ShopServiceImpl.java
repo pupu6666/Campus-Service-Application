@@ -2,6 +2,9 @@ package com.XyDp.service.impl;
 
 import cn.hutool.core.util.BooleanUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.json.JSONUtil;
+import com.XyDp.utils.BloomFilterInitializer;
+import com.XyDp.utils.RedisConstants;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.XyDp.dto.Result;
@@ -10,9 +13,13 @@ import com.XyDp.mapper.ShopMapper;
 import com.XyDp.service.IShopService;
 import com.XyDp.utils.CacheClient;
 import com.XyDp.utils.SystemConstants;
+import com.google.common.hash.BloomFilter;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.GeoResult;
 import org.springframework.data.geo.GeoResults;
+import org.springframework.data.geo.Point;
 import org.springframework.data.redis.connection.RedisGeoCommands;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.domain.geo.GeoReference;
@@ -20,6 +27,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -32,6 +40,7 @@ import static com.XyDp.utils.RedisConstants.*;
  *
  */
 @Service
+@Slf4j
 public class ShopServiceImpl extends ServiceImpl<ShopMapper, Shop> implements IShopService {
 
 
@@ -58,7 +67,7 @@ public class ShopServiceImpl extends ServiceImpl<ShopMapper, Shop> implements IS
         if (shop==null){
             return Result.fail("店铺不存在");
         }
-                // 7.返回
+        // 7.返回
         return Result.ok(shop);
     }
 

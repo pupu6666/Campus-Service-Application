@@ -2773,3 +2773,9 @@
 2025/05/03 23:43:57 [error] 20664#20992: *7 CreateFile() "E:\ideajavaproject\xydp-master\src\main\resources\nginx-1.18.0/html/hmdp/registry/machine" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "POST /registry/machine HTTP/1.1", host: "localhost"
 2025/05/03 23:54:05 [error] 22328#20348: *15 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET /api/shop-type/list HTTP/1.1", upstream: "http://127.0.0.1:8081/shop-type/list", host: "localhost:8083", referrer: "http://localhost:8083/"
 2025/05/03 23:54:05 [error] 22328#20348: *17 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET /api/blog/hot?current=1 HTTP/1.1", upstream: "http://127.0.0.1:8081/blog/hot?current=1", host: "localhost:8083", referrer: "http://localhost:8083/"
+2025/05/04 14:01:06 [notice] 13388#9948: signal process started
+2025/05/04 14:14:36 [notice] 13388#13788: signal process started
+2025/05/04 14:17:01 [notice] 9452#10144: signal process started
+2025/05/04 14:36:52 [notice] 12160#11124: signal process started
+2025/05/04 14:40:55 [notice] 12512#2228: signal process started
+2025/05/04 14:40:55 [error] 12512#2228: CreateFile() "E:\ideajavaproject\xydp-master\src\main\resources\nginx-1.18.0/logs/nginx.pid" failed (2: The system cannot find the file specified)
